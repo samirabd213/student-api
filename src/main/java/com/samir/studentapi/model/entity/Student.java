@@ -1,5 +1,7 @@
 package com.samir.studentapi.model.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,6 +30,11 @@ public class Student {
 
 	@Column(nullable = false)
 	private String password;
+
+	@ManyToOne
+	@JoinColumn(name = "formation_id")
+	@JsonBackReference // 🔥 Empêche la boucle infinie
+	private Formation formation; // Association avec Formation
 
 public Long getId() {
 	return id;
@@ -68,4 +75,12 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
+	// Getters et Setters
+	public Formation getFormation() {
+		return formation;
+	}
+
+	public void setFormation(Formation formation) {
+		this.formation = formation;
+	}
 }
