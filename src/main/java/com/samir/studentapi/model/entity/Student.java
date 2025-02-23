@@ -47,6 +47,15 @@ public class Student {
 	@JsonBackReference
 	private List<Groupe> groupes; // Liste des groupes auxquels l'étudiant est inscrit
 
+	@ManyToMany
+	@JoinTable(
+		name = "student_ue",
+		joinColumns = @JoinColumn(name = "student_id"),
+		inverseJoinColumns = @JoinColumn(name = "ue_id")
+	)
+	@JsonBackReference
+	private List<UE> ues;
+
 public Long getId() {
 	return id;
 }
@@ -101,6 +110,12 @@ public void setPassword(String password) {
 
 	public void setGroupes(List<Groupe> groupes) {
 		this.groupes = groupes;
+	}
+	public List<UE> getUes() {
+		return ues;
+	}
+	public void setUes(List<UE> ues) {
+		this.ues = ues;
 	}
 }
 
