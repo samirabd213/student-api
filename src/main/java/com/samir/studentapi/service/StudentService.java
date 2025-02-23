@@ -1,6 +1,7 @@
 package com.samir.studentapi.service;
 
 import com.samir.studentapi.model.dto.StudentDTO;
+import com.samir.studentapi.model.entity.Groupe;
 import com.samir.studentapi.model.entity.Student;
 import com.samir.studentapi.model.entity.Formation;
 import com.samir.studentapi.model.repository.StudentRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class StudentService {
@@ -75,4 +77,8 @@ public class StudentService {
 		}
 		return false; // Si l'étudiant ou la formation n'existe pas
 	}
+	public Optional<List<Groupe>> getStudentGroups(Long studentId) {
+		return studentRepository.findById(studentId).map(Student::getGroupes);
+	}
+
 }

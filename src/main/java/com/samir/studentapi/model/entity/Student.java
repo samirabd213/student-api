@@ -2,8 +2,11 @@ package com.samir.studentapi.model.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "students")
@@ -35,6 +38,14 @@ public class Student {
 	@JoinColumn(name = "formation_id")
 	@JsonBackReference // 🔥 Empêche la boucle infinie
 	private Formation formation; // Association avec Formation
+	@ManyToMany
+	@JoinTable(
+		name = "student_groupes", // Nom de la table d'association
+		joinColumns = @JoinColumn(name = "student_id"), // Clé étrangère vers Student
+		inverseJoinColumns = @JoinColumn(name = "groupe_id") // Clé étrangère vers Groupe
+	)
+	@JsonBackReference
+	private List<Groupe> groupes; // Liste des groupes auxquels l'étudiant est inscrit
 
 public Long getId() {
 	return id;
@@ -83,4 +94,14 @@ public void setPassword(String password) {
 	public void setFormation(Formation formation) {
 		this.formation = formation;
 	}
+
+	public List<Groupe> getGroupes() {
+		return groupes;
+	}
+
+	public void setGroupes(List<Groupe> groupes) {
+		this.groupes = groupes;
+	}
 }
+
+

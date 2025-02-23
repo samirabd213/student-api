@@ -2,6 +2,7 @@ package com.samir.studentapi.controller;
 
 import com.samir.studentapi.model.dto.StudentDTO;
 import com.samir.studentapi.model.entity.Formation;
+import com.samir.studentapi.model.entity.Groupe;
 import com.samir.studentapi.model.entity.Student;
 import com.samir.studentapi.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/etudiants")
 public class StudentController {
 
 	@Autowired
@@ -63,4 +64,10 @@ public class StudentController {
 			return ResponseEntity.notFound().build();
 		}
 	}
+	@GetMapping("/{id}/groups")
+	public ResponseEntity<List<Groupe>> getStudentGroups(@PathVariable Long id) {
+		Optional<List<Groupe>> groupes = studentService.getStudentGroups(id);
+		return groupes.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+	}
+
 }
