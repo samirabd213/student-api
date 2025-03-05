@@ -197,6 +197,10 @@ public class StudentService {
 		}
 		return false; // Si l'étudiant ou l'UE n'existe pas
 	}
+	public List<Student> getAllStudents() {
+		return studentRepository.findAll();
+	}
+
 
 
 }

@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/etudiants")
+@CrossOrigin(origins = "http://localhost:8081")
 public class StudentController {
 
 	@Autowired
@@ -132,5 +133,11 @@ public class StudentController {
 			return ResponseEntity.notFound().build();
 		}
 	}
+	@GetMapping
+	public ResponseEntity<List<Student>> getAllStudents() {
+		List<Student> students = studentService.getAllStudents();
+		return ResponseEntity.ok(students);
+	}
+
 
 }
