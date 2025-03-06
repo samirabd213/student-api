@@ -60,6 +60,7 @@ public class StudentService {
 		}
 		return false;
 	}
+	/*
 	public Optional<Formation> getStudentFormation(Long studentId) {
 		return studentRepository.findById(studentId).map(Student::getFormation);
 	}
@@ -197,6 +198,8 @@ public class StudentService {
 		}
 		return false; // Si l'étudiant ou l'UE n'existe pas
 	}
+
+	 */
 	public List<Student> getAllStudents() {
 		return studentRepository.findAll();
 	}

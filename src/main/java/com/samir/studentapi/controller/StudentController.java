@@ -44,7 +44,7 @@ public class StudentController {
 		boolean deleted = studentService.deleteStudent(id);
 		return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
 	}
-
+/*
 	@GetMapping("/{id}/formations")
 	public ResponseEntity<Formation> getStudentFormation(@PathVariable Long id) {
 		Optional<Formation> formation = studentService.getStudentFormation(id);
@@ -133,6 +133,8 @@ public class StudentController {
 			return ResponseEntity.notFound().build();
 		}
 	}
+
+ */
 	@GetMapping
 	public ResponseEntity<List<Student>> getAllStudents() {
 		List<Student> students = studentService.getAllStudents();
