@@ -23,7 +23,7 @@ L’API utilise une base H2 en mémoire.
 http://localhost:8080/h2-console
 🛠️ Configuration H2
 Paramètre	Valeur
-JDBC URL	jdbc:h2:mem:studentdb
+JDBC URL	jdbc:h2:mem:samir_db
 User:	sa
 Password:	(laisser vide)
 Une fois connecté, tu peux voir et manipuler les tables (STUDENT).
